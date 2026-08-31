@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNO ARRIBA | Complejo de canchas de fútbol</title>
+    <meta name="description" content="Reservá tu cancha de fútbol 5, 6 y 7 en UNO ARRIBA. Consulta disponibilidad en tiempo real, pagá tu seña y confirmá al instante por WhatsApp.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- 1. HEADER / MENÚ DE NAVEGACIÓN -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#inicio" class="logo">
+                <div class="logo-icon">⚽</div>
+                <div class="logo-text">
+                    <span class="logo-title">UNO ARRIBA</span>
+                    <span class="logo-subtitle">Complejo de canchas</span>
+                </div>
+            </a>
+
+            <!-- Navegación Desktop -->
+            <nav class="nav-desktop">
+                <a href="#inicio" class="nav-link">INICIO</a>
+                <a href="#canchas" class="nav-link">CANCHAS</a>
+                <a href="#buffet" class="nav-link">BUFFET</a>
+                <a href="#ubicacion" class="nav-link">UBICACIÓN</a>
+                <a href="#canchas" class="btn btn-primary nav-btn-highlight">RESERVAR</a>
+            </nav>
+
+            <!-- Botón Hamburguesa Mobile -->
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menú Desplegable Mobile -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-nav-links">
+            <a href="#inicio" class="mobile-nav-link">INICIO <span>→</span></a>
+            <a href="#canchas" class="mobile-nav-link">CANCHAS <span>→</span></a>
+            <a href="#buffet" class="mobile-nav-link">BUFFET <span>→</span></a>
+            <a href="#ubicacion" class="mobile-nav-link">UBICACIÓN <span>→</span></a>
+        </div>
+        <a href="#canchas" class="btn btn-primary" id="mobileReserveBtn" style="width: 100%;">RESERVAR CANCHA</a>
+    </div>
+
+    <!-- 2. HERO / PORTADA -->
+    <section class="hero" id="inicio">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-badge">⚡ EL MEJOR COMPLEJO DE LA ZONA</div>
+            <h1 class="hero-title">UNO ARRIBA</h1>
+            <p class="hero-tagline">"Reservá tu cancha, armá el partido y vení a jugar."</p>
+            <div class="hero-actions">
+                <a href="#canchas" class="btn btn-primary btn-large">RESERVAR CANCHA</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SECCIÓN DE CANCHAS -->
+    <section class="section-padding" id="canchas">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">NUESTRAS INSTALACIONES</span>
+                <h2 class="section-title">ELEGÍ TU CANCHA</h2>
+            </div>
+            
+            <div class="courts-grid" id="courtsGrid">
+                <!-- Se renderizan dinámicamente las 5 canchas desde config.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. DISPONIBILIDAD Y HORARIOS -->
+    <section class="section-padding availability-section" id="disponibilidad">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">TURNO Y HORARIOS</span>
+                <h2 class="section-title">ELEGÍ EL DÍA</h2>
+            </div>
+
+            <!-- Banner de Cancha Seleccionada -->
+            <div class="selected-court-banner" id="selectedCourtBanner">
+                <div class="selected-court-info">
+                    <h3 id="selectedCourtTitle">Cancha 1 (Fútbol 5)</h3>
+                    <p id="selectedCourtPrice">$XX.XXX / Hora — Seña del 50%</p>
+                </div>
+                <a href="#canchas" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.4rem 0.8rem; min-height: auto;">CAMBIAR CANCHA</a>
+            </div>
+
+            <!-- Selector Horizontal de los próximos 7 Días -->
+            <div class="days-picker-container">
+                <div class="days-scroll-wrapper" id="daysWrapper">
+                    <!-- Se generan dinámicamente HOY, MAÑANA y los próximos 5 días -->
+                </div>
+            </div>
+
+            <!-- Grilla de Horarios de la Cancha y Día Seleccionado -->
+            <div class="slots-container" id="slotsContainer">
+                <!-- Se generan los turnos DISPONIBLES u OCUPADOS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SECCIÓN BUFFET -->
+    <section class="section-padding" id="buffet">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">CARTA DIGITAL</span>
+                <h2 class="section-title">BUFFET</h2>
+            </div>
+
+            <div class="buffet-categories">
+                <!-- Categoría Bebidas -->
+                <div>
+                    <h3 class="buffet-category-title">🥤 BEBIDAS</h3>
+                    <div class="buffet-items-grid" id="drinksGrid">
+                        <!-- Items de bebidas -->
+                    </div>
+                </div>
+
+                <!-- Categoría Comidas -->
+                <div>
+                    <h3 class="buffet-category-title">🍔 COMIDAS</h3>
+                    <div class="buffet-items-grid" id="foodGrid">
+                        <!-- Items de comidas -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SECCIÓN UBICACIÓN -->
+    <section class="section-padding" id="ubicacion" style="background-color: #0e1422; border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">CÓMO LLEGAR</span>
+                <h2 class="section-title">¿DÓNDE ESTAMOS?</h2>
+            </div>
+
+            <div class="location-grid">
+                <!-- Mapa Google Maps Embebido -->
+                <div class="map-container">
+                    <iframe id="googleMapsEmbed" src="" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Complejo UNO ARRIBA"></iframe>
+                </div>
+
+                <!-- Información de contacto y botón -->
+                <div class="contact-info-card">
+                    <div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <div class="contact-text-label">Dirección</div>
+                                <div class="contact-text-value" id="displayDireccion">DIRECCIÓN_PENDIENTE</div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <div class="contact-text-label">Teléfono</div>
+                                <div class="contact-text-value" id="displayTelefono">TELEFONO_PENDIENTE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a id="btnOpenMaps" href="#" target="_blank" rel="noopener" class="btn btn-maps" style="margin-top: 1.5rem;">
+                        📍 ABRIR EN GOOGLE MAPS
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">⚽</div>
+                        <div class="logo-text">
+                            <span class="logo-title">UNO ARRIBA</span>
+                            <span class="logo-subtitle">Complejo de canchas</span>
+                        </div>
+                    </div>
+                    <p>El predio ideal para jugar con tus amigos, armar torneos y disfrutar del tercer tiempo.</p>
+                </div>
+
+                <div class="footer-links-group">
+                    <h4>Contacto</h4>
+                    <ul class="footer-links">
+                        <li>📍 <span id="footerDireccion">DIRECCIÓN_PENDIENTE</span></li>
+                        <li>📞 <span id="footerTelefono">TELEFONO_PENDIENTE</span></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-group">
+                    <h4>Redes Sociales</h4>
+                    <ul class="footer-links">
+                        <li><a id="footerInstagram" href="#" target="_blank" rel="noopener">📷 Instagram</a></li>
+                        <li><a id="footerWhatsapp" href="#" target="_blank" rel="noopener">📱 WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> UNO ARRIBA — Complejo de canchas de fútbol. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         MODALES DE RESERVA Y CONFIRMACIÓN
+         ========================================================================== -->
+
+    <!-- MODAL 1: FORMULARIO DE RESERVA -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 class="modal-title">RESERVAR TURNO</h3>
+                <button class="modal-close-btn" id="closeBookingModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Resumen Dinámico -->
+                <div class="booking-summary-box">
+                    <div class="summary-row">
+                        <span class="summary-label">Cancha:</span>
+                        <span class="summary-value" id="modalCourtName">Fútbol 5 - Cancha 1</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Fecha:</span>
+                        <span class="summary-value" id="modalDate">Hoy, 1 de Septiembre</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Horario:</span>
+                        <span class="summary-value" id="modalTime">20:00 - 21:00 hs</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Precio Total:</span>
+                        <span class="summary-value" id="modalTotalPrice">$XX.XXX</span>
+                    </div>
+                    <div class="summary-row deposit-row">
+                        <span class="summary-label">Seña (50%):</span>
+                        <span class="summary-value" id="modalDepositPrice">$XX.XXX</span>
+                    </div>
+                </div>
+
+                <!-- Formulario de Datos -->
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label class="form-label" for="customerNamePhone">Nombre y teléfono *</label>
+                        <input type="text" id="customerNamePhone" class="form-input" placeholder="Ej: Juan Pérez - 11 2345-6789" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="matchName">Nombre del partido o desafío *</label>
+                        <input type="text" id="matchName" class="form-input" placeholder="La banda de la pelota vs Los pollos" required>
+                    </div>
+
+                    <div class="deposit-disclaimer">
+                        "Para confirmar el turno se requiere abonar el 50% de seña. El saldo restante se cancela en el predio."
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        💳 PAGAR SEÑA
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: CONFIRMACIÓN Y WHATSAPP -->
+    <div class="modal-overlay" id="confirmationModal">
+        <div class="modal-card" style="text-align: center;">
+            <div class="modal-header">
+                <h3 class="modal-title" style="margin: 0 auto; color: var(--accent-green-bright);">✅ ¡RESERVA REALIZADA!</h3>
+                <button class="modal-close-btn" id="closeConfirmationModalBtn" style="position: absolute; right: 1rem;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="confirmation-success-icon">⚽</div>
+                
+                <div class="booking-summary-box" style="text-align: left;">
+                    <div class="summary-row">
+                        <span class="summary-label">Reservaste:</span>
+                        <span class="summary-value" id="confCourtName">⚽ Cancha Fútbol 5 - Cancha 1</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Partido:</span>
+                        <span class="summary-value" id="confMatchName">La banda de la pelota vs Los pollos</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Fecha:</span>
+                        <span class="summary-value" id="confDate">1 de septiembre</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Horario:</span>
+                        <span class="summary-value" id="confTime">20:00 - 21:00 hs</span>
+                    </div>
+                    <div class="summary-row deposit-row">
+                        <span class="summary-label">Seña Abonada:</span>
+                        <span class="summary-value" id="confDeposit">$XX.XXX</span>
+                    </div>
+                </div>
+
+                <!-- Segunda vía: Aviso por WhatsApp -->
+                <div class="whatsapp-notice-card">
+                    <h4 class="whatsapp-notice-title">¿QUERÉS AVISARLE AL COMPLEJO?</h4>
+                    <p class="whatsapp-notice-text">
+                        "Podés enviar los datos de tu reserva por WhatsApp para dejar constancia del turno."
+                    </p>
+                    
+                    <a id="btnSendWhatsApp" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp" style="margin-bottom: 1rem;">
+                        🟢 AVISAR POR WHATSAPP
+                    </a>
+                </div>
+
+                <a id="btnConfMaps" href="#" target="_blank" rel="noopener" class="btn btn-maps" style="margin-top: 1rem;">
+                    📍 VER UBICACIÓN
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
